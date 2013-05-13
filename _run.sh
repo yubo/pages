@@ -1,3 +1,5 @@
 #!/bin/sh
-rake deploy
+rake generate
+rake preview
+#rake deploy
 
