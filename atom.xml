@@ -4,7 +4,7 @@
   <title><![CDATA[侧耳倾听]]></title>
   <link href="http://yubo.github.io/atom.xml" rel="self"/>
   <link href="http://yubo.github.io/"/>
-  <updated>2014-09-22T18:26:22+08:00</updated>
+  <updated>2014-09-22T20:58:49+08:00</updated>
   <id>http://yubo.github.io/</id>
   <author>
     <name><![CDATA[YU BO]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Write to me]]></title>
-    <link href="http://yubo.github.io/blog/2012/05/13/write+to+me/"/>
+    <title type="html"><![CDATA[写给自己]]></title>
+    <link href="http://yubo.github.io/blog/2012/05/13/%E5%86%99%E7%BB%99%E8%87%AA%E5%B7%B1/"/>
     <updated>2012-05-13T00:00:00+08:00</updated>
-    <id>http://yubo.github.io/blog/2012/05/13/write to me</id>
+    <id>http://yubo.github.io/blog/2012/05/13/写给自己</id>
     <content type="html"><![CDATA[<h3>how to begin</h3>
 
 <pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -31,9 +31,9 @@ rake setup_github_pages
 
 <h3>how to post</h3>
 
-<pre><code>rake generate   // build static web
-rake preview    // preview url  http://localhost:4000
-rake deploy     // deploy to yubo.github.io
+<pre><code>rake generate   # build static web
+rake preview    # preview url  http://localhost:4000
+rake deploy     # deploy to yubo.github.io
 </code></pre>
 
 <h3>Don&rsquo;t forget to commit the source for your blog.</h3>
