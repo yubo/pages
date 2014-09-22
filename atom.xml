@@ -4,7 +4,7 @@
   <title><![CDATA[侧耳倾听]]></title>
   <link href="http://yubo.github.io/atom.xml" rel="self"/>
   <link href="http://yubo.github.io/"/>
-  <updated>2014-09-22T17:27:59+08:00</updated>
+  <updated>2014-09-22T17:39:28+08:00</updated>
   <id>http://yubo.github.io/</id>
   <author>
     <name><![CDATA[YU BO]]></name>
@@ -26,7 +26,7 @@ mkdir ~/git
 git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
 cd ~/git/yubo.github.io
 git checkout -b source origin/source
-cd ~/git/yubo.github.io/source/_posts
+rake setup_github_pages
 </code></pre>
 
 <h3>how to post</h3>
@@ -34,6 +34,14 @@ cd ~/git/yubo.github.io/source/_posts
 <pre><code>rake generate   // build static web
 rake preview    // preview url  http://localhost:4000
 rake deploy     // deploy to yubo.github.io
+</code></pre>
+
+<h3>Don&rsquo;t forget to commit the source for your blog.</h3>
+
+<pre><code>cd ~/git/yubo.github.io
+git add .
+git commit -m 'your message'
+git push origin source
 </code></pre>
 ]]></content>
   </entry>
