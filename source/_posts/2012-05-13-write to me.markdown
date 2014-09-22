@@ -5,11 +5,16 @@
 	git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
 	cd ~/git/yubo.github.io
 	git checkout -b source origin/source
-	cd ~/git/yubo.github.io/source/_posts
-
+	rake setup_github_pages
 
 ### how to post
 	rake generate	// build static web
 	rake preview    // preview url  http://localhost:4000
 	rake deploy		// deploy to yubo.github.io
+
+### Don't forget to commit the source for your blog.
+	cd ~/git/yubo.github.io
+	git add .
+	git commit -m 'your message'
+	git push origin source
 
