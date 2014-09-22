@@ -1,0 +1,17 @@
+<h3>how to begin</h3>
+
+<pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+mkdir ~/git
+git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
+cd ~/git/yubo.github.io
+git checkout -b source origin/source
+cd ~/git/yubo.github.io/source/_posts
+</code></pre>
+
+<h3>how to post</h3>
+
+<pre><code>rake generate   // build static web
+rake preview    // preview url  http://localhost:4000
+rake deploy     // deploy to yubo.github.io
+</code></pre>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[侧耳倾听]]></title>
+  <link href="http://yubo.github.io/atom.xml" rel="self"/>
+  <link href="http://yubo.github.io/"/>
+  <updated>2014-09-22T17:27:59+08:00</updated>
+  <id>http://yubo.github.io/</id>
+  <author>
+    <name><![CDATA[YU BO]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Write to me]]></title>
+    <link href="http://yubo.github.io/blog/2012/05/13/write+to+me/"/>
+    <updated>2012-05-13T00:00:00+08:00</updated>
+    <id>http://yubo.github.io/blog/2012/05/13/write to me</id>
+    <content type="html"><![CDATA[<h3>how to begin</h3>
+
+<pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+mkdir ~/git
+git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
+cd ~/git/yubo.github.io
+git checkout -b source origin/source
+cd ~/git/yubo.github.io/source/_posts
+</code></pre>
+
+<h3>how to post</h3>
+
+<pre><code>rake generate   // build static web
+rake preview    // preview url  http://localhost:4000
+rake deploy     // deploy to yubo.github.io
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
