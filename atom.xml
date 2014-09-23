@@ -4,7 +4,7 @@
   <title><![CDATA[侧耳倾听]]></title>
   <link href="http://yubo.github.io/atom.xml" rel="self"/>
   <link href="http://yubo.github.io/"/>
-  <updated>2014-09-23T22:27:58+08:00</updated>
+  <updated>2014-09-23T22:50:12+08:00</updated>
   <id>http://yubo.github.io/</id>
   <author>
     <name><![CDATA[YU BO]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Coredump信息收集]]></title>
-    <link href="http://yubo.github.io/blog/2014/09/23/coredump%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
-    <updated>2014-09-23T00:00:00+08:00</updated>
-    <id>http://yubo.github.io/blog/2014/09/23/coredump信息收集</id>
+    <link href="http://yubo.github.io/blog/2014/09/23/coredump/"/>
+    <updated>2014-09-23T21:41:13+08:00</updated>
+    <id>http://yubo.github.io/blog/2014/09/23/coredump</id>
     <content type="html"><![CDATA[<h3>简介</h3>
 
 <hr />
@@ -41,8 +41,7 @@
 
 <h5>先编译一个会crash的文件</h5>
 
-<pre><code>`gcc -g -o a a.c`
-</code></pre>
+<p><code>gcc -g -o a a.c</code></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -74,18 +73,15 @@
 
 <h5>保存下debug文件</h5>
 
-<pre><code>`objcopy --only-keep-debug a a.debug`
-</code></pre>
+<p><code>objcopy --only-keep-debug a a.debug</code></p>
 
 <h5>release版本去掉debug信息</h5>
 
-<pre><code>`strip -g a`
-</code></pre>
+<p><code>strip -g a</code></p>
 
 <h5>运行产生core文件,确保linux内核开启了ELF_CORE选项，</h5>
 
-<pre><code>`ulimit -c unlimited &amp;&amp; ./a`
-</code></pre>
+<p><code>ulimit -c unlimited &amp;&amp; ./a</code></p>
 
 <h5>导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)</h5>
 
@@ -137,10 +133,10 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[写给自己]]></title>
-    <link href="http://yubo.github.io/blog/2012/05/13/%E5%86%99%E7%BB%99%E8%87%AA%E5%B7%B1/"/>
-    <updated>2012-05-13T00:00:00+08:00</updated>
-    <id>http://yubo.github.io/blog/2012/05/13/写给自己</id>
+    <title type="html"><![CDATA[How to Start Octopress]]></title>
+    <link href="http://yubo.github.io/blog/2012/05/12/how_to_start/"/>
+    <updated>2012-05-12T22:43:39+08:00</updated>
+    <id>http://yubo.github.io/blog/2012/05/12/how_to_start</id>
     <content type="html"><![CDATA[<h3>how to begin</h3>
 
 <pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
