@@ -14,7 +14,7 @@
 
 1. 先编译一个会crash的文件
 
-  `gcc -g -o a a.c`
+	`gcc -g -o a a.c`
 ```
 /* a.c */
 #include <stdio.h>
@@ -33,15 +33,15 @@ int main(int argc, char ** argv)
 
 2. 保存下debug文件
 
-  `objcopy --only-keep-debug a a.debug`
+	`objcopy --only-keep-debug a a.debug`
 
 3. release版本去掉debug信息
 
-  `strip -g a`
+	`strip -g a`
 
 4. 运行产生core文件,确保linux内核开启了ELF_CORE选项，
 
-  `ulimit -c unlimited && ./a`
+	`ulimit -c unlimited && ./a`
 
 5. 导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)
 ```
