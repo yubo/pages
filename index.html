@@ -9,8 +9,9 @@
   <meta name="author" content="YU BO">
 
   
-  <meta name="description" content="how to begin git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ &hellip;">
+  <meta name="description" content="简介 进程的coredump文件较大,出现问题后收集起来比较费事.本文介绍一种轻量级的办法,先将core文件里的关键debug信息打印出来,后续可以非常方便的传到日志服务器中,然后可以在服务器上通过debuginfo文件还原成有用的信息 需要准备的软件 cortex
+addr2line
+gcc等 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +67,170 @@ git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ &helli
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/09/23/coredump%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">Coredump信息收集</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-09-23T00:00:00+08:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>简介</h3>
+
+<hr />
+
+<p>进程的coredump文件较大,出现问题后收集起来比较费事.本文介绍一种轻量级的办法,先将core文件里的关键debug信息打印出来,后续可以非常方便的传到日志服务器中,然后可以在服务器上通过debuginfo文件还原成有用的信息</p>
+
+<h3>需要准备的软件</h3>
+
+<hr />
+
+<ul>
+<li><a href="https://code.google.com/p/cortex-tool/downloads/list" title="cortex">cortex</a></li>
+<li>addr2line</li>
+<li>gcc等</li>
+</ul>
+
+
+<h3>例子</h3>
+
+<hr />
+
+<ol>
+<li>先编译一个会crash的文件</li>
+</ol>
+
+
+<p>  <code>gcc -g -o a a.c</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/* a.c */
+</span><span class='line'>#include &lt;stdio.h&gt;
+</span><span class='line'>void foo(char *p)
+</span><span class='line'>{
+</span><span class='line'>  int *crash = NULL;
+</span><span class='line'>  *crash = 1;
+</span><span class='line'>}
+</span><span class='line'>int main(int argc, char ** argv)
+</span><span class='line'>{
+</span><span class='line'>  char *p = "hello world";
+</span><span class='line'>  foo(p);
+</span><span class='line'>  return 0;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>保存下debug文件</li>
+</ol>
+
+
+<p>  <code>objcopy --only-keep-debug a a.debug</code></p>
+
+<ol>
+<li>release版本去掉debug信息</li>
+</ol>
+
+
+<p>  <code>strip -g a</code></p>
+
+<ol>
+<li>运行产生core文件,确保linux内核开启了ELF_CORE选项，</li>
+</ol>
+
+
+<p>  <code>ulimit -c unlimited &amp;&amp; ./a</code></p>
+
+<ol>
+<li>导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[yubo@yubo990:~/programe/c/gdb]$cortex -i core  -f cal,reg,cal
+</span><span class='line'>
+</span><span class='line'>8&lt;--------------------------------------------------------------------------
+</span><span class='line'>  rax:0x0000000000000000  rbx:0x0000000000000000  rcx:0x0000000000400500  rdx:0x0000000019F3ACF8
+</span><span class='line'>  rbp:0x0000000019F3ABD0  rsp:0x0000000019F3ABD0  rsi:0x0000000019F3ACE8  rdi:0x00000000004005EC
+</span><span class='line'>  rip:0x00000000004004C8  r8:0x0000000000400590  r9:0x0000000067D72740  r10:0x0000000019F3AA60
+</span><span class='line'>  r11:0x00000000679C5680  r12:0x00000000004003D0  r13:0x0000000019F3ACE0  r14:0x0000000000000000
+</span><span class='line'>  r15:0x0000000000000000  cs:0x0000000000000033  ss:0x000000000000002B  orig_rax :0x00000000FFFFFFFF
+</span><span class='line'>  eflags:0x0000000000010202
+</span><span class='line'>Call trace:
+</span><span class='line'>  #0 at 0x00000000004004c8
+</span><span class='line'>  #0 at 0x00000000004004f3 in &lt;main&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>还原成文件行</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[yubo@yubo990:~/programe/c/gdb]$addr2line  -e a.debug  0x00000000004004c8 0x00000000004004f3
+</span><span class='line'>/home/yubo/programe/c/gdb/a.c:6
+</span><span class='line'>/home/yubo/programe/c/gdb/a.c:12</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>资源</h3>
+
+<hr />
+
+<ul>
+<li><a href="https://code.google.com/p/cortex-tool/downloads/list" title="cortex">cortex</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -138,6 +303,10 @@ git push origin source
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/23/coredump%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">Coredump信息收集</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/05/13/%E5%86%99%E7%BB%99%E8%87%AA%E5%B7%B1/">写给自己</a>
