@@ -12,7 +12,7 @@
 ### 例子
 ---
 
-1. 先编译一个会crash的文件
+##### 先编译一个会crash的文件
 
 	`gcc -g -o a a.c`
 ```
@@ -31,19 +31,20 @@ int main(int argc, char ** argv)
 }
 ```
 
-2. 保存下debug文件
+##### 保存下debug文件
 
 	`objcopy --only-keep-debug a a.debug`
 
-3. release版本去掉debug信息
+##### release版本去掉debug信息
 
 	`strip -g a`
 
-4. 运行产生core文件,确保linux内核开启了ELF_CORE选项，
+##### 运行产生core文件,确保linux内核开启了ELF_CORE选项，
 
 	`ulimit -c unlimited && ./a`
 
-5. 导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)
+##### 导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)
+
 ```
 [yubo@yubo990:~/programe/c/gdb]$cortex -i core  -f reg,cal
 
@@ -60,7 +61,8 @@ Call trace:
 ```
 
 
-6. 还原成文件行
+##### 还原成文件行
+
 ```
 [yubo@yubo990:~/programe/c/gdb]$addr2line  -e a.debug  0x00000000004004c8 0x00000000004004f3
 /home/yubo/programe/c/gdb/a.c:6
