@@ -45,7 +45,7 @@ int main(int argc, char ** argv)
 
 5. 导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)
 ```
-[yubo@yubo990:~/programe/c/gdb]$cortex -i core  -f cal,reg,cal
+[yubo@yubo990:~/programe/c/gdb]$cortex -i core  -f reg,cal
 
 8<--------------------------------------------------------------------------
   rax:0x0000000000000000  rbx:0x0000000000000000  rcx:0x0000000000400500  rdx:0x0000000019F3ACF8
