@@ -118,11 +118,11 @@ gcc等 &hellip;">
 <hr />
 
 <ol>
-<li>先编译一个会crash的文件</li>
+<li><p>先编译一个会crash的文件</p>
+
+<p> <code>gcc -g -o a a.c</code></p></li>
 </ol>
 
-
-<p>  <code>gcc -g -o a a.c</code></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -153,28 +153,16 @@ gcc等 &hellip;">
 
 
 <ol>
-<li>保存下debug文件</li>
-</ol>
+<li><p>保存下debug文件</p>
 
+<p> <code>objcopy --only-keep-debug a a.debug</code></p></li>
+<li><p>release版本去掉debug信息</p>
 
-<p>  <code>objcopy --only-keep-debug a a.debug</code></p>
+<p> <code>strip -g a</code></p></li>
+<li><p>运行产生core文件,确保linux内核开启了ELF_CORE选项，</p>
 
-<ol>
-<li>release版本去掉debug信息</li>
-</ol>
-
-
-<p>  <code>strip -g a</code></p>
-
-<ol>
-<li>运行产生core文件,确保linux内核开启了ELF_CORE选项，</li>
-</ol>
-
-
-<p>  <code>ulimit -c unlimited &amp;&amp; ./a</code></p>
-
-<ol>
-<li>导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)</li>
+<p> <code>ulimit -c unlimited &amp;&amp; ./a</code></p></li>
+<li><p>导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)</p></li>
 </ol>
 
 
