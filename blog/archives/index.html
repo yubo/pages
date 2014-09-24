@@ -9,9 +9,9 @@
   <meta name="author" content="YU BO">
 
   
-  <meta name="description" content=" Blog Archive 2014 Coredump信息收集
+  <meta name="description" content="Blog Archive 2014 Coredump信息收集
 Sep 23 2014 2012 How to Start Octopress
-May 12 2012 Recent Posts Coredump信息收集 How to Start Octopress ">
+May 12 2012 Recent Posts Coredump信息收集 How to Start Octopress GitHub Repos &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -60,6 +60,7 @@ May 12 2012 Recent Posts Coredump信息收集 How to Start Octopress ">
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">about</a></li>
 </ul>
 
 </nav>
@@ -95,7 +96,7 @@ May 12 2012 Recent Posts Coredump信息收集 How to Start Octopress ">
 
 <article>
   
-<h1><a href="/blog/2012/05/12/how_to_start/">How to Start Octopress</a></h1>
+<h1><a href="/blog/2012/05/12/how-to-start/">How to Start Octopress</a></h1>
 <time datetime="2012-05-12T22:43:39+08:00" pubdate><span class='month'>May</span> <span class='day'>12</span> <span class='year'>2012</span></time>
 
 
@@ -119,15 +120,52 @@ May 12 2012 Recent Posts Coredump信息收集 How to Start Octopress ">
       </li>
     
       <li class="post">
-        <a href="/blog/2012/05/12/how_to_start/">How to Start Octopress</a>
+        <a href="/blog/2012/05/12/how-to-start/">How to Start Octopress</a>
       </li>
     
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/yubo">@yubo</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yubo',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
 
+
+<section>
+<h1>酷站博客</h1>
+<ul>
+        <li> <a href="http://noops.me/">NoOps</a> </li>
+        <li> <a href="http://coolshell.cn/">酷壳CoolShell</a> </li>
+        <li> <a href="http://xdutaotao.github.io/">TaoTao</a> </li>
+</ul>
+</section>
 
   
 </aside>

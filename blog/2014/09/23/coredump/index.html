@@ -60,6 +60,7 @@ gcc等 &hellip;">
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">about</a></li>
 </ul>
 
 </nav>
@@ -103,6 +104,9 @@ gcc等 &hellip;">
 </ul>
 
 
+<!--more-->
+
+
 <h3>例子</h3>
 
 <hr />
@@ -111,7 +115,8 @@ gcc等 &hellip;">
 
 <p><code>gcc -g -o a a.c</code></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>一个会crash的例子  (a.c)</span> <a href='/downloads/code/c/gdb/a.c'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -124,19 +129,22 @@ gcc等 &hellip;">
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/* a.c */
-</span><span class='line'>#include &lt;stdio.h&gt;
-</span><span class='line'>void foo(char *p)
-</span><span class='line'>{
-</span><span class='line'>  int *crash = NULL;
-</span><span class='line'>  *crash = 1;
-</span><span class='line'>}
-</span><span class='line'>int main(int argc, char ** argv)
-</span><span class='line'>{
-</span><span class='line'>  char *p = "hello world";
-</span><span class='line'>  foo(p);
-</span><span class='line'>  return 0;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">int</span> <span class="o">*</span><span class="n">crash</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">*</span><span class="n">crash</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="s">&quot;hello world&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">foo</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h5>保存下debug文件</h5>
@@ -229,7 +237,7 @@ gcc等 &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/05/12/how_to_start/" title="Previous Post: How to start Octopress">&laquo; How to start Octopress</a>
+        <a class="basic-alignment left" href="/blog/2012/05/12/how-to-start/" title="Previous Post: How to start Octopress">&laquo; How to start Octopress</a>
       
       
     </p>
@@ -249,15 +257,52 @@ gcc等 &hellip;">
       </li>
     
       <li class="post">
-        <a href="/blog/2012/05/12/how_to_start/">How to Start Octopress</a>
+        <a href="/blog/2012/05/12/how-to-start/">How to Start Octopress</a>
       </li>
     
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/yubo">@yubo</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'yubo',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
 
+
+<section>
+<h1>酷站博客</h1>
+<ul>
+        <li> <a href="http://noops.me/">NoOps</a> </li>
+        <li> <a href="http://coolshell.cn/">酷壳CoolShell</a> </li>
+        <li> <a href="http://xdutaotao.github.io/">TaoTao</a> </li>
+</ul>
+</section>
 
   
 </aside>
