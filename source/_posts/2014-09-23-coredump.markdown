@@ -16,6 +16,7 @@ categories:
 * addr2line
 * gcc等
 
+<!--more-->
 
 ### 例子
 ---
@@ -23,21 +24,7 @@ categories:
 ##### 先编译一个会crash的文件
 
 `gcc -g -o a a.c`
-```
-/* a.c */
-#include <stdio.h>
-void foo(char *p)
-{
-	int *crash = NULL;
-	*crash = 1;
-}
-int main(int argc, char ** argv)
-{
-	char *p = "hello world";
-	foo(p);
-	return 0;
-}
-```
+{% include_code 一个会crash的例子 lang:c c/gdb/a.c %}
 
 ##### 保存下debug文件
 
