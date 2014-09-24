@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Categories: Gdb | 侧耳倾听]]></title>
+  <link href="http://yubo.github.io/blog/categories/gdb/atom.xml" rel="self"/>
+  <link href="http://yubo.github.io/"/>
+  <updated>2014-09-24T19:27:35+08:00</updated>
+  <id>http://yubo.github.io/</id>
+  <author>
+    <name><![CDATA[YU BO]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Coredump信息收集]]></title>
+    <link href="http://yubo.github.io/blog/2014/09/23/coredump/"/>
+    <updated>2014-09-23T21:41:13+08:00</updated>
+    <id>http://yubo.github.io/blog/2014/09/23/coredump</id>
+    <content type="html"><![CDATA[<h3>简介</h3>
+
+<hr />
+
+<p>进程的coredump文件较大,出现问题后收集起来比较费事.本文介绍一种轻量级的办法,先将core文件里的关键debug信息打印出来,后续可以非常方便的传到日志服务器中,然后可以在服务器上通过debuginfo文件还原成有用的信息</p>
+
+<h3>需要准备的软件</h3>
+
+<hr />
+
+<ul>
+<li><a href="https://code.google.com/p/cortex-tool/downloads/list" title="cortex">cortex</a></li>
+<li>addr2line</li>
+<li>gcc等</li>
+</ul>
+
+
+<!--more-->
+
+
+<h3>例子</h3>
+
+<hr />
+
+<h5>先编译一个会crash的文件</h5>
+
+<p><code>gcc -g -o a a.c</code>
+<figure class='code'><figcaption><span>一个会crash的例子  (a.c)</span> <a href='/downloads/code/c/gdb/a.c'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="nf">foo</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>	<span class="kt">int</span> <span class="o">*</span><span class="n">crash</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</span><span class='line'>	<span class="o">*</span><span class="n">crash</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>	<span class="kt">char</span> <span class="o">*</span><span class="n">p</span> <span class="o">=</span> <span class="s">&quot;hello world&quot;</span><span class="p">;</span>
+</span><span class='line'>	<span class="n">foo</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h5>保存下debug文件</h5>
+
+<p><code>objcopy --only-keep-debug a a.debug</code></p>
+
+<h5>release版本去掉debug信息</h5>
+
+<p><code>strip -g a</code></p>
+
+<h5>运行产生core文件,确保linux内核开启了ELF_CORE选项，</h5>
+
+<p><code>ulimit -c unlimited &amp;&amp; ./a</code></p>
+
+<h5>导出core信息，core文件可能在不同的位置，可查看(/proc/sys/kernel/core_pattern)</h5>
+
+<pre><code>[yubo@yubo990:~/programe/c/gdb]$cortex -i core  -f reg,cal
+
+8&lt;--------------------------------------------------------------------------
+  rax:0x0000000000000000  rbx:0x0000000000000000  rcx:0x0000000000400500  rdx:0x0000000019F3ACF8
+  rbp:0x0000000019F3ABD0  rsp:0x0000000019F3ABD0  rsi:0x0000000019F3ACE8  rdi:0x00000000004005EC
+  rip:0x00000000004004C8  r8:0x0000000000400590  r9:0x0000000067D72740  r10:0x0000000019F3AA60
+  r11:0x00000000679C5680  r12:0x00000000004003D0  r13:0x0000000019F3ACE0  r14:0x0000000000000000
+  r15:0x0000000000000000  cs:0x0000000000000033  ss:0x000000000000002B  orig_rax :0x00000000FFFFFFFF
+  eflags:0x0000000000010202
+Call trace:
+  #0 at 0x00000000004004c8
+  #0 at 0x00000000004004f3 in &lt;main&gt;
+</code></pre>
+
+<h5>还原成文件行</h5>
+
+<pre><code>[yubo@yubo990:~/programe/c/gdb]$addr2line  -e a.debug  0x00000000004004c8 0x00000000004004f3
+/home/yubo/programe/c/gdb/a.c:6
+/home/yubo/programe/c/gdb/a.c:12
+</code></pre>
+
+<h3>资源</h3>
+
+<hr />
+
+<ul>
+<li><a href="https://code.google.com/p/cortex-tool/downloads/list" title="cortex">cortex</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Start Octopress]]></title>
+    <link href="http://yubo.github.io/blog/2012/05/12/how-to-start/"/>
+    <updated>2012-05-12T22:43:39+08:00</updated>
+    <id>http://yubo.github.io/blog/2012/05/12/how-to-start</id>
+    <content type="html"><![CDATA[<h3>how to begin</h3>
+
+<pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+mkdir ~/git
+git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
+cd ~/git/yubo.github.io
+git checkout -b source origin/source
+rake setup_github_pages
+</code></pre>
+
+<h3>how to post</h3>
+
+<pre><code>rake generate   # build static web
+rake preview    # preview url  http://localhost:4000
+rake deploy     # deploy to yubo.github.io
+</code></pre>
+
+<h3>Don&rsquo;t forget to commit the source for your blog.</h3>
+
+<pre><code>cd ~/git/yubo.github.io
+git add .
+git commit -m 'your message'
+git push origin source
+</code></pre>
+
+<!--more-->
+
+
+<h3>tips</h3>
+
+<hr />
+
+<h5>发布blog</h5>
+
+<pre><code>rake new_post["Zombie Ninjas Attack: A survivor's retrospective"]
+</code></pre>
+
+<hr />
+
+<h5>发布页面</h5>
+
+<pre><code>rake new_page[about]
+# creates /source/about/index.markdown
+
+rake new_page[about/page.html]
+# creates /source/about/page.html
+</code></pre>
+
+<p>&#8220;`html 编辑 _includes/custom/navigation.html <a href="http://www.yubo.org">http://www.yubo.org</a> www.yubo.org</p>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">about</a></li>
+</ul>
+
+
+<pre><code>
+---
+##### Excerpts
+
+  When writing a post, you can add an HTML comment `&lt;!--more--&gt;` to split the post for an excerpt. Only the first section of the post, before the comment, will show up on the blog index.
+---
+##### image tag
+
+    <img src="http://placekitten.com/890/280">
+    <img class="left" src="http://placekitten.com/320/250" title="Place Kitten #2" >
+    <img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #3" >
+    <img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #4" alt="An image of a very cute kitten">
+
+
+<img src="http://placekitten.com/890/280">
+<img class="left" src="http://placekitten.com/320/250" title="Place Kitten #2" >
+“上帝制作了泥人，上帝烦了。所以上帝对一些泥人说，‘站起来。看我创造的一切。高山，大海，天空，星辰。’我就是那种坐起来环顾四周的泥人。幸福的我，幸福的泥人。我，一个泥人坐了起来，看见了上帝创造的奇迹。你太棒了，上帝！世界上只有您上帝才能做到这一切！我当然不能。和您相比，我感到自己十分渺小。一想到还有许多泥人未能做起来环顾四周，我便感到自己还有一点重要。我已经得到这么多，而大多数泥人却一无所获。谢谢您的垂顾！现在泥人又躺下睡了，泥人又多少值得回忆的事啊！我曾和多少有趣的坐起来的泥人见过面啊！我爱我看见过的一切。”
+
+摘自 库尔特·冯内古特《猫的摇篮》（金峰 译）
+
+<img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #3" >
+
+"God made mud. God got lonesome. So God said to some of the mud, 'Sit up.See all I've made,' Said God. 'The hills, the sea, the sky, the stars.' And I, with some of the mud, had got to sit up and look around. Lucky me, lucky mud. I, mud, sat up and saw what a nice job God <img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #4" alt="An image of a very cute kitten">had done. Nice going God! Nobody but you could have done it God! I certainly couldn't have. I feel very unimportant compared to You. The only way I can feel the least bit important is to think of all the mud that didn't even get to sit up and look around. I got so much, and most mud got so little. Thank you for the honor! Now mud lies down again and goes to sleep. What memories for mud to have! What interesting other kinds of sitting-up mud I met! I loved everything i saw."
+
+from Kurt Vonnegut &lt;Cat's Cradle&gt;
+
+
+
+
+---
+##### code blocks
+
+
+    ``` [language] [title] [url] [link text]
+    code snippet
+    ```
+
+    ```c hello world http://www.yubo.org www.yubo.org
+    #include &lt;stdio.h&gt;
+    int main(int argc, char const *argv[])
+    {
+      printf("hello world!\n");
+      return 0;
+    }
+    ```
+</code></pre>
+
+<h1>include &lt;stdio.h></h1>
+
+<p>int main(int argc, char const *argv[])
+{
+  printf(&ldquo;hello world!\n&rdquo;);
+  return 0;
+}</p>
+
+<h2>&#8220;`</h2>
+
+<h5>code</h5>
+
+<pre><code>{ % include_code hello world lang:c c/hw.c %}
+</code></pre>
+
+<p><figure class='code'><figcaption><span>hello world  (hw.c)</span> <a href='/downloads/code/c/hw.c'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>	
+</span><span class='line'>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<hr />
+
+<h5>gist tag</h5>
+
+<pre><code>{ % gist ac29681554ad6fe016ae  gistfile1.diff %}
+</code></pre>
+
+<p><div><script src='https://gist.github.com/ac29681554ad6fe016ae.js?file=gistfile1.diff'></script>
+<noscript><pre><code>#include &lt;stdio.h&gt;
+int main(int argc, char const *argv[])
+{
+-  printf(&quot;hello!\n&quot;);
++  printf(&quot;hello world!\n&quot;);
+  return 0;
+}</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>

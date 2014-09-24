@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>侧耳倾听</title>
+  <title>Categories: Gdb - 侧耳倾听</title>
   <meta name="author" content="YU BO">
 
   
-  <meta name="description" content="简介 进程的coredump文件较大,出现问题后收集起来比较费事.本文介绍一种轻量级的办法,先将core文件里的关键debug信息打印出来,后续可以非常方便的传到日志服务器中,然后可以在服务器上通过debuginfo文件还原成有用的信息 需要准备的软件 cortex
-addr2line
-gcc等 ">
+  <meta name="description" content="Category: gdb">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ gcc等 ">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yubo.github.io">
+  <link rel="canonical" href="http://yubo.github.io/blog/categories/gdb">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="侧耳倾听" type="application/atom+xml">
@@ -66,128 +64,57 @@ gcc等 ">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/09/23/coredump/">Coredump信息收集</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-23T21:41:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:41 pm</span></time>
-        
-           | <a href="/blog/2014/09/23/coredump/#disqus_thread"
-             data-disqus-identifier="http://yubo.github.io/blog/2014/09/23/coredump/">Comments</a>
-        
-      </p>
+    <h1 class="entry-title">Categories: Gdb</h1>
     
   </header>
+  
+  <div id="blog-archives" class="category">
 
 
-  <div class="entry-content"><h3>简介</h3>
 
-<hr />
+  
+  <h2>2014</h2>
 
-<p>进程的coredump文件较大,出现问题后收集起来比较费事.本文介绍一种轻量级的办法,先将core文件里的关键debug信息打印出来,后续可以非常方便的传到日志服务器中,然后可以在服务器上通过debuginfo文件还原成有用的信息</p>
+<article>
+  
+<h1><a href="/blog/2014/09/23/coredump/">Coredump信息收集</a></h1>
+<time datetime="2014-09-23T21:41:13+08:00" pubdate><span class='month'>Sep</span> <span class='day'>23</span> <span class='year'>2014</span></time>
 
-<h3>需要准备的软件</h3>
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/gdb/'>gdb</a></span>
+</footer>
 
-<hr />
 
-<ul>
-<li><a href="https://code.google.com/p/cortex-tool/downloads/list" title="cortex">cortex</a></li>
-<li>addr2line</li>
-<li>gcc等</li>
-</ul>
+</article>
 
+
+
+  
+  <h2>2012</h2>
+
+<article>
+  
+<h1><a href="/blog/2012/05/12/how-to-start/">How to Start Octopress</a></h1>
+<time datetime="2012-05-12T22:43:39+08:00" pubdate><span class='month'>May</span> <span class='day'>12</span> <span class='year'>2012</span></time>
+
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/gdb/'>gdb</a>, <a class='category' href='/blog/categories/other/'>other</a></span>
+</footer>
+
+
+</article>
 
 </div>
+
   
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/23/coredump/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/12/how-to-start/">How to Start Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2012-05-12T22:43:39+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:43 pm</span></time>
-        
-           | <a href="/blog/2012/05/12/how-to-start/#disqus_thread"
-             data-disqus-identifier="http://yubo.github.io/blog/2012/05/12/how-to-start/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>how to begin</h3>
-
-<pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-mkdir ~/git
-git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
-cd ~/git/yubo.github.io
-git checkout -b source origin/source
-rake setup_github_pages
-</code></pre>
-
-<h3>how to post</h3>
-
-<pre><code>rake generate   # build static web
-rake preview    # preview url  http://localhost:4000
-rake deploy     # deploy to yubo.github.io
-</code></pre>
-
-<h3>Don&rsquo;t forget to commit the source for your blog.</h3>
-
-<pre><code>cd ~/git/yubo.github.io
-git add .
-git commit -m 'your message'
-git push origin source
-</code></pre>
+</article>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/12/how-to-start/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -252,6 +179,7 @@ git push origin source
 
   
 </aside>
+
 
     </div>
   </div>

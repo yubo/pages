@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Categories: Other | 侧耳倾听]]></title>
+  <link href="http://yubo.github.io/blog/categories/other/atom.xml" rel="self"/>
+  <link href="http://yubo.github.io/"/>
+  <updated>2014-09-24T19:27:35+08:00</updated>
+  <id>http://yubo.github.io/</id>
+  <author>
+    <name><![CDATA[YU BO]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Start Octopress]]></title>
+    <link href="http://yubo.github.io/blog/2012/05/12/how-to-start/"/>
+    <updated>2012-05-12T22:43:39+08:00</updated>
+    <id>http://yubo.github.io/blog/2012/05/12/how-to-start</id>
+    <content type="html"><![CDATA[<h3>how to begin</h3>
+
+<pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+mkdir ~/git
+git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
+cd ~/git/yubo.github.io
+git checkout -b source origin/source
+rake setup_github_pages
+</code></pre>
+
+<h3>how to post</h3>
+
+<pre><code>rake generate   # build static web
+rake preview    # preview url  http://localhost:4000
+rake deploy     # deploy to yubo.github.io
+</code></pre>
+
+<h3>Don&rsquo;t forget to commit the source for your blog.</h3>
+
+<pre><code>cd ~/git/yubo.github.io
+git add .
+git commit -m 'your message'
+git push origin source
+</code></pre>
+
+<!--more-->
+
+
+<h3>tips</h3>
+
+<hr />
+
+<h5>发布blog</h5>
+
+<pre><code>rake new_post["Zombie Ninjas Attack: A survivor's retrospective"]
+</code></pre>
+
+<hr />
+
+<h5>发布页面</h5>
+
+<pre><code>rake new_page[about]
+# creates /source/about/index.markdown
+
+rake new_page[about/page.html]
+# creates /source/about/page.html
+</code></pre>
+
+<p>&#8220;`html 编辑 _includes/custom/navigation.html <a href="http://www.yubo.org">http://www.yubo.org</a> www.yubo.org</p>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">about</a></li>
+</ul>
+
+
+<pre><code>
+---
+##### Excerpts
+
+  When writing a post, you can add an HTML comment `&lt;!--more--&gt;` to split the post for an excerpt. Only the first section of the post, before the comment, will show up on the blog index.
+---
+##### image tag
+
+    <img src="http://placekitten.com/890/280">
+    <img class="left" src="http://placekitten.com/320/250" title="Place Kitten #2" >
+    <img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #3" >
+    <img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #4" alt="An image of a very cute kitten">
+
+
+<img src="http://placekitten.com/890/280">
+<img class="left" src="http://placekitten.com/320/250" title="Place Kitten #2" >
+“上帝制作了泥人，上帝烦了。所以上帝对一些泥人说，‘站起来。看我创造的一切。高山，大海，天空，星辰。’我就是那种坐起来环顾四周的泥人。幸福的我，幸福的泥人。我，一个泥人坐了起来，看见了上帝创造的奇迹。你太棒了，上帝！世界上只有您上帝才能做到这一切！我当然不能。和您相比，我感到自己十分渺小。一想到还有许多泥人未能做起来环顾四周，我便感到自己还有一点重要。我已经得到这么多，而大多数泥人却一无所获。谢谢您的垂顾！现在泥人又躺下睡了，泥人又多少值得回忆的事啊！我曾和多少有趣的坐起来的泥人见过面啊！我爱我看见过的一切。”
+
+摘自 库尔特·冯内古特《猫的摇篮》（金峰 译）
+
+<img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #3" >
+
+"God made mud. God got lonesome. So God said to some of the mud, 'Sit up.See all I've made,' Said God. 'The hills, the sea, the sky, the stars.' And I, with some of the mud, had got to sit up and look around. Lucky me, lucky mud. I, mud, sat up and saw what a nice job God <img class="right" src="http://placekitten.com/300/500" width="150" height="250" title="Place Kitten #4" alt="An image of a very cute kitten">had done. Nice going God! Nobody but you could have done it God! I certainly couldn't have. I feel very unimportant compared to You. The only way I can feel the least bit important is to think of all the mud that didn't even get to sit up and look around. I got so much, and most mud got so little. Thank you for the honor! Now mud lies down again and goes to sleep. What memories for mud to have! What interesting other kinds of sitting-up mud I met! I loved everything i saw."
+
+from Kurt Vonnegut &lt;Cat's Cradle&gt;
+
+
+
+
+---
+##### code blocks
+
+
+    ``` [language] [title] [url] [link text]
+    code snippet
+    ```
+
+    ```c hello world http://www.yubo.org www.yubo.org
+    #include &lt;stdio.h&gt;
+    int main(int argc, char const *argv[])
+    {
+      printf("hello world!\n");
+      return 0;
+    }
+    ```
+</code></pre>
+
+<h1>include &lt;stdio.h></h1>
+
+<p>int main(int argc, char const *argv[])
+{
+  printf(&ldquo;hello world!\n&rdquo;);
+  return 0;
+}</p>
+
+<h2>&#8220;`</h2>
+
+<h5>code</h5>
+
+<pre><code>{ % include_code hello world lang:c c/hw.c %}
+</code></pre>
+
+<p><figure class='code'><figcaption><span>hello world  (hw.c)</span> <a href='/downloads/code/c/hw.c'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include &lt;stdio.h&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>	<span class="n">printf</span><span class="p">(</span><span class="s">&quot;hello world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>	
+</span><span class='line'>	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<hr />
+
+<h5>gist tag</h5>
+
+<pre><code>{ % gist ac29681554ad6fe016ae  gistfile1.diff %}
+</code></pre>
+
+<p><div><script src='https://gist.github.com/ac29681554ad6fe016ae.js?file=gistfile1.diff'></script>
+<noscript><pre><code>#include &lt;stdio.h&gt;
+int main(int argc, char const *argv[])
+{
+-  printf(&quot;hello!\n&quot;);
++  printf(&quot;hello world!\n&quot;);
+  return 0;
+}</code></pre></noscript></div>
+</p>
+]]></content>
+  </entry>
+  
+</feed>
