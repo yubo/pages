@@ -3,7 +3,7 @@ layout: post
 title: "How to start Octopress"
 date: 2012-05-12 22:43:39 +0800
 comments: true
-categories:
+categories: other gdb
 ---
 
 ### how to begin
