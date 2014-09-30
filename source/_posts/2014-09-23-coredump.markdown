@@ -3,7 +3,7 @@ layout: post
 title: "Coredump信息收集"
 date: 2014-09-23 21:41:13 +0800
 comments: true
-categories: gdb
+categories: gdb elf
 ---
 
 ### 简介
