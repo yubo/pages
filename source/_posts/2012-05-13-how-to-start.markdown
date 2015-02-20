@@ -14,6 +14,10 @@ categories: 其他
     git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
     cd ~/git/yubo.github.io
     git checkout -b source origin/source
+	sudo apt-get install nodejs 
+	rbenv install 1.9.3-p547; rbenv rehash
+	gem install bundle; rbenv rehash
+	bundle install; rbenv rehash
     rake setup_github_pages
 
 ### how to post
