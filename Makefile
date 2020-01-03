@@ -1,4 +1,4 @@
-.PHONY: build run deploy env
+.PHONY: build run deploy setup
 
 all: build
 
@@ -9,5 +9,10 @@ run:
 	rake preview
 
 deploy:
-	rake deploy
+	rake generate && \
+	rake deploy && \
+	git status
+
+setup:
+	./scripts/setup.sh
 
