@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Categories: Gdb | 侧耳倾听]]></title>
-  <link href="http://www.yubo.org/blog/categories/gdb/atom.xml" rel="self"/>
+  <title><![CDATA[Categories: Elf | 侧耳倾听]]></title>
+  <link href="http://www.yubo.org/blog/categories/elf/atom.xml" rel="self"/>
   <link href="http://www.yubo.org/"/>
   <updated>2020-01-03T16:54:30+00:00</updated>
   <id>http://www.yubo.org/</id>

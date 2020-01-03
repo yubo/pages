@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Categories: Other | 侧耳倾听]]></title>
-  <link href="http://yubo.github.io/blog/categories/other/atom.xml" rel="self"/>
-  <link href="http://yubo.github.io/"/>
-  <updated>2014-09-24T19:27:35+08:00</updated>
-  <id>http://yubo.github.io/</id>
+  <title><![CDATA[Categories: 其他 | 侧耳倾听]]></title>
+  <link href="http://www.yubo.org/blog/categories/qi-ta/atom.xml" rel="self"/>
+  <link href="http://www.yubo.org/"/>
+  <updated>2020-01-03T16:54:30+00:00</updated>
+  <id>http://www.yubo.org/</id>
   <author>
     <name><![CDATA[YU BO]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Start Octopress]]></title>
-    <link href="http://yubo.github.io/blog/2012/05/12/how-to-start/"/>
+    <link href="http://www.yubo.org/blog/2012/05/12/how-to-start/"/>
     <updated>2012-05-12T22:43:39+08:00</updated>
-    <id>http://yubo.github.io/blog/2012/05/12/how-to-start</id>
+    <id>http://www.yubo.org/blog/2012/05/12/how-to-start</id>
     <content type="html"><![CDATA[<h3>how to begin</h3>
 
 <pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -26,6 +26,10 @@ mkdir ~/git
 git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
 cd ~/git/yubo.github.io
 git checkout -b source origin/source
+sudo apt-get install nodejs 
+rbenv install 1.9.3-p547; rbenv rehash
+gem install bundle; rbenv rehash
+bundle install; rbenv rehash
 rake setup_github_pages
 </code></pre>
 

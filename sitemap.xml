@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  
-  <url>
-    <loc>http://yubo.github.io/blog/2014/09/23/coredump/</loc>
-    
-    <lastmod>2014-09-23T21:41:13+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://yubo.github.io/blog/2012/05/12/how-to-start/</loc>
-    
-    <lastmod>2012-05-12T22:43:39+08:00</lastmod>
-    
-    <priority>0.8</priority>
-  </url>
-  
-  
-  <url>
-    <loc>http://yubo.github.io/404.html</loc>
-    <lastmod>2014-09-24T19:27:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>http://yubo.github.io/</loc>
-    <lastmod>2014-09-24T19:27:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
-  <url>
-    <loc>http://yubo.github.io/blog/archives/</loc>
-    <lastmod>2014-09-24T19:27:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>http://yubo.github.io/about/</loc>
-    <lastmod>2014-09-24T19:27:35+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  
-  
+<url>
+<loc>http://www.yubo.org/blog/2020/01/03/frequently-asked-questions-at-work/</loc>
+<lastmod>2020-01-03T22:30:31+08:00</lastmod>
+</url>
+<url>
+<loc>http://www.yubo.org/blog/2014/09/23/coredump/</loc>
+<lastmod>2014-09-23T21:41:13+08:00</lastmod>
+</url>
+<url>
+<loc>http://www.yubo.org/blog/2012/05/12/how-to-start/</loc>
+<lastmod>2012-05-12T22:43:39+08:00</lastmod>
+</url>
+<url>
+<loc>http://www.yubo.org/404.html</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/blog/archives/</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/about/</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/ppt/</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/other.html</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/blog/categories/qi-ta/</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/blog/categories/gdb/</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/blog/categories/elf/</loc>
+</url>
+<url>
+<loc>http://www.yubo.org/ss/index.html</loc>
+<lastmod>2020-01-03T16:37:40+00:00</lastmod>
+</url>
+<url>
+<loc>http://www.yubo.org/ppt/uaq.html</loc>
+<lastmod>2020-01-03T15:18:41+00:00</lastmod>
+</url>
+<url>
+<loc>http://www.yubo.org/ppt/sample.html</loc>
+<lastmod>2020-01-03T15:18:41+00:00</lastmod>
+</url>
 </urlset>

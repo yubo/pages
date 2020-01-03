@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[侧耳倾听]]></title>
-  <link href="http://yubo.github.io/atom.xml" rel="self"/>
-  <link href="http://yubo.github.io/"/>
-  <updated>2014-09-24T19:27:35+08:00</updated>
-  <id>http://yubo.github.io/</id>
+  <link href="http://www.yubo.org/atom.xml" rel="self"/>
+  <link href="http://www.yubo.org/"/>
+  <updated>2020-01-03T16:54:30+00:00</updated>
+  <id>http://www.yubo.org/</id>
   <author>
     <name><![CDATA[YU BO]]></name>
     
@@ -14,10 +14,99 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Frequently Asked Questions at Work]]></title>
+    <link href="http://www.yubo.org/blog/2020/01/03/frequently-asked-questions-at-work/"/>
+    <updated>2020-01-03T22:30:31+08:00</updated>
+    <id>http://www.yubo.org/blog/2020/01/03/frequently-asked-questions-at-work</id>
+    <content type="html"><![CDATA[<h3>简介</h3>
+
+<hr />
+
+<p>工作中经常会遇到一些问题，我尝试从个人角度给出个人见解，供大家参考。</p>
+
+<h4>&ldquo;这个错了&#8221;，是什么意思？</h4>
+
+<ul>
+<li>不是针对你的观点（每个人都可以有自己的想法）</li>
+<li>某部分事实错了</li>
+<li>推理过程错了</li>
+<li>结论无法外推（原因见2，3）</li>
+</ul>
+
+
+<h4>xxoo 软件有个专用的监控工具，我们应该用吗？</h4>
+
+<ul>
+<li>我更需要的是通用的数据接口，方便接入公司内部的监控平台。这样就可以无差别的对 xxoo 监控数据进行展示和报警。自动化的工作也成为了可能。</li>
+<li>直接使用一个专用的ui工具或者界面，会让我的工作界面分裂成一个个的碎片。</li>
+</ul>
+
+
+<h4>A系统又出问题了，怎么搞的？</h4>
+
+<ul>
+<li>当我们想找出问题的原因之前，应该先搞清楚这是不是一个问题。（我们无法搞清楚一个不存在的问题）</li>
+<li>如果系统A给出了一个明确的报错，通常这不是一个问题（能够被系统识别的错误，不算是系统的错误，一般是由外部环境导致的）。应该把注意力放在对系统A调用的输入和返回的信息上。</li>
+<li>如果是 A系统 没有按照某种外部的规则运行，比如超出 B系统 的<code>负载极限</code>或者<code>规范</code>发出请求。这通常也不是问题。
+
+<ul>
+<li>理由是，A系统 很难知道外部世界的状况，他会按自己的方式去调用外部的资源。绝大多数系统都应如此</li>
+</ul>
+</li>
+</ul>
+
+
+<!--more-->
+
+
+<h4>我按官方文档做的，却得不到希望的结果，我是哪里出了问题？</h4>
+
+<ul>
+<li>官方文档可能确实是错的，要知道文档的维护也是很辛苦的，如果发现问题，社区需要你的帮助</li>
+<li>也有可能你在什么地方出现了问题，要找出原因，参考 <a href="https://github.com/yubo/doc/blob/master/docs/smart_questions.md">sarmt question</a></li>
+</ul>
+
+
+<h4>我明明 xx，却 xx，你说奇怪不奇怪？</h4>
+
+<ul>
+<li>计算机并不属于自然科学的范畴。在这个领域没有魔法，所有的东西都既可以证伪，也可以证明。</li>
+<li>如果你真的想解决问题，请参考 <a href="https://github.com/yubo/doc/blob/master/docs/smart_questions.md">sarmt question</a></li>
+</ul>
+
+
+<h4>我要做 xx，请问我该如何开始呢？</h4>
+
+<ul>
+<li>先创建一个文件</li>
+<li>写一个起始函数，c语言中这个函数是 <code>int main(int argc, char *argv[])</code></li>
+<li>把你的想法填充进去</li>
+<li>赶紧运行一下，看看效果。如果有问题，或者新想法，返回上一步，继续填充。</li>
+</ul>
+
+
+<h4>写代码有什么技巧吗？</h4>
+
+<ul>
+<li>小且稳定的代码片段是好的</li>
+<li>不了解细节的代码，应该用测试用例保护起来（用了第三方库，或者依赖于特殊的运行环境等等）</li>
+<li>尽量复用代码。预编译，宏处理等生成代码的技术，有时效果拔群。</li>
+<li>多做思想实验，在脑海里想象代码的样子，并逐行执行他们，能节省大量时间</li>
+<li>多写小段的代码，并立刻执行他们，减小获得反馈的时间，通常超过5秒以上的编译->执行->报错 周期，会让我烦躁不安</li>
+<li>多看可以可以引发思考的代码。比如好的代码，或是自己写的代码</li>
+<li>保持简单的逻辑，避免出现特例</li>
+<li><a href="https://github.com/yubo/doc/blob/master/docs/coding_style.md">利于阅读的代码风格</a></li>
+<li>将以上原则应用到尽可能更大的尺度上</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Coredump信息收集]]></title>
-    <link href="http://yubo.github.io/blog/2014/09/23/coredump/"/>
+    <link href="http://www.yubo.org/blog/2014/09/23/coredump/"/>
     <updated>2014-09-23T21:41:13+08:00</updated>
-    <id>http://yubo.github.io/blog/2014/09/23/coredump</id>
+    <id>http://www.yubo.org/blog/2014/09/23/coredump</id>
     <content type="html"><![CDATA[<h3>简介</h3>
 
 <hr />
@@ -46,7 +135,7 @@
 
 <p><code>gcc -g -o a a.c</code></p>
 
-<figure class='code'><figcaption><span>一个会crash的例子  (a.c)</span> <a href='http://yubo.github.io/downloads/code/c/gdb/a.c'>download</a></figcaption>
+<figure class='code'><figcaption><span>一个会crash的例子  (a.c)</span> <a href='http://www.yubo.org/downloads/code/c/gdb/a.c'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -141,9 +230,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Start Octopress]]></title>
-    <link href="http://yubo.github.io/blog/2012/05/12/how-to-start/"/>
+    <link href="http://www.yubo.org/blog/2012/05/12/how-to-start/"/>
     <updated>2012-05-12T22:43:39+08:00</updated>
-    <id>http://yubo.github.io/blog/2012/05/12/how-to-start</id>
+    <id>http://www.yubo.org/blog/2012/05/12/how-to-start</id>
     <content type="html"><![CDATA[<h3>how to begin</h3>
 
 <pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
@@ -152,6 +241,10 @@ mkdir ~/git
 git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
 cd ~/git/yubo.github.io
 git checkout -b source origin/source
+sudo apt-get install nodejs 
+rbenv install 1.9.3-p547; rbenv rehash
+gem install bundle; rbenv rehash
+bundle install; rbenv rehash
 rake setup_github_pages
 </code></pre>
 
@@ -272,7 +365,7 @@ int main(int argc, char const *argv[])
 <pre><code>{ % include_code hello world lang:c c/hw.c %}
 </code></pre>
 
-<figure class='code'><figcaption><span>hello world  (hw.c)</span> <a href='http://yubo.github.io/downloads/code/c/hw.c'>download</a></figcaption>
+<figure class='code'><figcaption><span>hello world  (hw.c)</span> <a href='http://www.yubo.org/downloads/code/c/hw.c'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>

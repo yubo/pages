@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>侧耳倾听</title>
+  <title>Frequently Asked Questions at Work - 侧耳倾听</title>
   <meta name="author" content="YU BO">
 
   
@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.yubo.org">
+  <link rel="canonical" href="http://www.yubo.org/blog/2020/01/03/frequently-asked-questions-at-work">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="侧耳倾听" type="application/atom+xml">
@@ -67,15 +67,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2020/01/03/frequently-asked-questions-at-work/">Frequently Asked Questions at Work</a></h1>
+      <h1 class="entry-title">Frequently Asked Questions at Work</h1>
     
     
       <p class="meta">
@@ -86,15 +83,15 @@
 
 <time class='entry-date' datetime='2020-01-03T22:30:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2020</span></span> <span class='time'>10:30 pm</span></time>
         
-           | <a href="/blog/2020/01/03/frequently-asked-questions-at-work/#disqus_thread"
-             data-disqus-identifier="http://www.yubo.org/blog/2020/01/03/frequently-asked-questions-at-work/">Comments</a>
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://www.yubo.org">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h3>简介</h3>
+<div class="entry-content"><h3>简介</h3>
 
 <hr />
 
@@ -132,140 +129,94 @@
 </ul>
 
 
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2020/01/03/frequently-asked-questions-at-work/">Read on &rarr;</a>
-    </footer>
-  
+<!--more-->
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/09/23/coredump/">Coredump信息收集</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-23T21:41:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:41 pm</span></time>
-        
-           | <a href="/blog/2014/09/23/coredump/#disqus_thread"
-             data-disqus-identifier="http://www.yubo.org/blog/2014/09/23/coredump/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>简介</h3>
-
-<hr />
-
-<p>进程的coredump文件较大,出现问题后收集起来比较费事.本文介绍一种轻量级的办法,先将core文件里的关键debug信息打印出来,后续可以非常方便的传到日志服务器中,然后可以在服务器上通过debuginfo文件还原成有用的信息</p>
-
-<h3>需要准备的软件</h3>
-
-<hr />
+<h4>我按官方文档做的，却得不到希望的结果，我是哪里出了问题？</h4>
 
 <ul>
-<li><a href="https://code.google.com/p/cortex-tool/downloads/list" title="cortex">cortex</a></li>
-<li>addr2line</li>
-<li>gcc等</li>
+<li>官方文档可能确实是错的，要知道文档的维护也是很辛苦的，如果发现问题，社区需要你的帮助</li>
+<li>也有可能你在什么地方出现了问题，要找出原因，参考 <a href="https://github.com/yubo/doc/blob/master/docs/smart_questions.md">sarmt question</a></li>
 </ul>
 
 
+<h4>我明明 xx，却 xx，你说奇怪不奇怪？</h4>
+
+<ul>
+<li>计算机并不属于自然科学的范畴。在这个领域没有魔法，所有的东西都既可以证伪，也可以证明。</li>
+<li>如果你真的想解决问题，请参考 <a href="https://github.com/yubo/doc/blob/master/docs/smart_questions.md">sarmt question</a></li>
+</ul>
+
+
+<h4>我要做 xx，请问我该如何开始呢？</h4>
+
+<ul>
+<li>先创建一个文件</li>
+<li>写一个起始函数，c语言中这个函数是 <code>int main(int argc, char *argv[])</code></li>
+<li>把你的想法填充进去</li>
+<li>赶紧运行一下，看看效果。如果有问题，或者新想法，返回上一步，继续填充。</li>
+</ul>
+
+
+<h4>写代码有什么技巧吗？</h4>
+
+<ul>
+<li>小且稳定的代码片段是好的</li>
+<li>不了解细节的代码，应该用测试用例保护起来（用了第三方库，或者依赖于特殊的运行环境等等）</li>
+<li>尽量复用代码。预编译，宏处理等生成代码的技术，有时效果拔群。</li>
+<li>多做思想实验，在脑海里想象代码的样子，并逐行执行他们，能节省大量时间</li>
+<li>多写小段的代码，并立刻执行他们，减小获得反馈的时间，通常超过5秒以上的编译->执行->报错 周期，会让我烦躁不安</li>
+<li>多看可以可以引发思考的代码。比如好的代码，或是自己写的代码</li>
+<li>保持简单的逻辑，避免出现特例</li>
+<li><a href="https://github.com/yubo/doc/blob/master/docs/coding_style.md">利于阅读的代码风格</a></li>
+<li>将以上原则应用到尽可能更大的尺度上</li>
+</ul>
+
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/23/coredump/">Read on &rarr;</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">YU BO</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2020-01-03T22:30:31+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2020</span></span> <span class='time'>10:30 pm</span></time>
+      
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2012/05/12/how-to-start/">How to Start Octopress</a></h1>
+      <div class="sharing">
+  
+  
+  
+</div>
+
     
-    
-      <p class="meta">
-        
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/09/23/coredump/" title="Previous Post: Coredump信息收集">&laquo; Coredump信息收集</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-<time class='entry-date' datetime='2012-05-12T22:43:39+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2012</span></span> <span class='time'>10:43 pm</span></time>
-        
-           | <a href="/blog/2012/05/12/how-to-start/#disqus_thread"
-             data-disqus-identifier="http://www.yubo.org/blog/2012/05/12/how-to-start/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>how to begin</h3>
-
-<pre><code>git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-mkdir ~/git
-git clone  git@github.com:yubo/yubo.github.io.git ~/git/yubo.github.io
-cd ~/git/yubo.github.io
-git checkout -b source origin/source
-sudo apt-get install nodejs 
-rbenv install 1.9.3-p547; rbenv rehash
-gem install bundle; rbenv rehash
-bundle install; rbenv rehash
-rake setup_github_pages
-</code></pre>
-
-<h3>how to post</h3>
-
-<pre><code>rake generate   # build static web
-rake preview    # preview url  http://localhost:4000
-rake deploy     # deploy to yubo.github.io
-</code></pre>
-
-<h3>Don&rsquo;t forget to commit the source for your blog.</h3>
-
-<pre><code>cd ~/git/yubo.github.io
-git add .
-git commit -m 'your message'
-git push origin source
-</code></pre>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/05/12/how-to-start/">Read on &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -335,6 +286,7 @@ git push origin source
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -349,7 +301,10 @@ git push origin source
       var disqus_shortname = 'ybbbb';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.yubo.org/blog/2020/01/03/frequently-asked-questions-at-work/';
+        var disqus_url = 'http://www.yubo.org/blog/2020/01/03/frequently-asked-questions-at-work/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
